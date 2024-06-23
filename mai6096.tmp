@@ -1,0 +1,155 @@
+[gd_scene load_steps=12 format=3 uid="uid://bahd2ckgau6or"]
+
+[ext_resource type="PackedScene" uid="uid://cxhkn3bp17dbv" path="res://player.tscn" id="1_8ra1s"]
+[ext_resource type="Script" path="res://main.gd" id="1_trjkq"]
+[ext_resource type="Texture2D" uid="uid://7di2de0miyrm" path="res://textures/fullbackground.png" id="2_8kah6"]
+[ext_resource type="PackedScene" uid="uid://bkpoc1mrorc8e" path="res://asteroid.tscn" id="2_27s7w"]
+[ext_resource type="Script" path="res://PositionTester.gd" id="3_454rd"]
+[ext_resource type="PackedScene" uid="uid://cnif2iskf5eav" path="res://world_boundary.tscn" id="4_s0ntt"]
+[ext_resource type="Script" path="res://location_buffer.gd" id="6_bpxa4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vk8fy"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pogjp"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5xaf"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ud18n"]
+size = Vector2(10, 10)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_trjkq")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("2_8kah6")
+
+[node name="Player" parent="." instance=ExtResource("1_8ra1s")]
+position = Vector2(0, 0)
+
+[node name="Camera2D2" type="Camera2D" parent="Player"]
+
+[node name="PositionTester" type="Label" parent="Player"]
+offset_left = 25.0
+offset_top = -33.0
+offset_right = 65.0
+offset_bottom = -10.0
+text = "location: "
+script = ExtResource("3_454rd")
+
+[node name="TopBound" parent="." instance=ExtResource("4_s0ntt")]
+position = Vector2(0, -648)
+rotation = 1.5708
+vertical = false
+
+[node name="RightBound" parent="." instance=ExtResource("4_s0ntt")]
+position = Vector2(1152, 0)
+
+[node name="Bottombound" parent="." instance=ExtResource("4_s0ntt")]
+position = Vector2(4, 648)
+rotation = 1.5708
+vertical = false
+
+[node name="LeftBound" parent="." instance=ExtResource("4_s0ntt")]
+position = Vector2(-1152, 0)
+
+[node name="NorthBuffer" type="Area2D" parent="."]
+position = Vector2(0, -486)
+collision_layer = 4
+collision_mask = 64
+script = ExtResource("6_bpxa4")
+horizontal = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NorthBuffer"]
+shape = SubResource("RectangleShape2D_vk8fy")
+
+[node name="EastBuffer" type="Area2D" parent="."]
+position = Vector2(864, 0)
+collision_layer = 4
+collision_mask = 64
+script = ExtResource("6_bpxa4")
+buffer_direction = 1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EastBuffer"]
+shape = SubResource("RectangleShape2D_pogjp")
+
+[node name="SouthBuffer" type="Area2D" parent="."]
+position = Vector2(0, 486)
+collision_layer = 4
+collision_mask = 64
+script = ExtResource("6_bpxa4")
+buffer_direction = 2
+horizontal = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SouthBuffer"]
+shape = SubResource("RectangleShape2D_h5xaf")
+
+[node name="WestBuffer" type="Area2D" parent="."]
+position = Vector2(-862, -5)
+collision_layer = 4
+collision_mask = 64
+script = ExtResource("6_bpxa4")
+buffer_direction = 3
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WestBuffer"]
+shape = SubResource("RectangleShape2D_ud18n")
+
+[node name="Asteroid" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(1057, -544)
+
+[node name="Asteroid2" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(-1043, -567)
+
+[node name="Asteroid3" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(-1037, 420)
+
+[node name="Asteroid4" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(1027, 542)
+
+[node name="Asteroid5" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(1029, 410)
+
+[node name="Asteroid6" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(-900, -570)
+
+[node name="Asteroid7" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(-1036, 522)
+
+[node name="Asteroid8" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(-888, 524)
+
+[node name="Asteroid9" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(-1030, -412)
+
+[node name="Asteroid10" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(867, 546)
+
+[node name="Asteroid11" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(1062, -428)
+
+[node name="Asteroid12" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(932, -549)
+
+[connection signal="player_moved" from="." to="Player/PositionTester" method="_on_main_player_moved"]
+[connection signal="area_entered" from="NorthBuffer" to="NorthBuffer" method="_on_area_entered"]
+[connection signal="area_exited" from="NorthBuffer" to="NorthBuffer" method="_on_area_exited"]
+[connection signal="player_state_changed" from="NorthBuffer" to="." method="_on_north_buffer_player_state_changed"]
+[connection signal="area_entered" from="EastBuffer" to="EastBuffer" method="_on_area_entered"]
+[connection signal="area_exited" from="EastBuffer" to="EastBuffer" method="_on_area_exited"]
+[connection signal="player_state_changed" from="EastBuffer" to="." method="_on_east_buffer_player_state_changed"]
+[connection signal="area_entered" from="SouthBuffer" to="SouthBuffer" method="_on_area_entered"]
+[connection signal="area_exited" from="SouthBuffer" to="SouthBuffer" method="_on_area_exited"]
+[connection signal="player_state_changed" from="SouthBuffer" to="." method="_on_south_buffer_player_state_changed"]
+[connection signal="area_entered" from="WestBuffer" to="WestBuffer" method="_on_area_entered"]
+[connection signal="area_exited" from="WestBuffer" to="WestBuffer" method="_on_area_exited"]
+[connection signal="player_state_changed" from="WestBuffer" to="." method="_on_west_buffer_player_state_changed"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://0svybvdtqqko"]
+
+[ext_resource type="Script" path="res://location_buffer_vertical.gd" id="1_734m6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfa3o"]
+size = Vector2(576, 1296)
+
+[node name="LocationBuffer" type="Area2D"]
+collision_layer = 4
+collision_mask = 64
+script = ExtResource("1_734m6")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rfa3o")

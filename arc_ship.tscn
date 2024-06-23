@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgsxeah68mwi5"]
+
+[ext_resource type="PackedScene" uid="uid://bkpoc1mrorc8e" path="res://asteroid.tscn" id="1_y7i0g"]
+[ext_resource type="Script" path="res://arc_ship.gd" id="2_o4juv"]
+[ext_resource type="Texture2D" uid="uid://dtykssauxplvw" path="res://textures/ark_ship.png" id="2_sb5np"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4yrp6"]
+radius = 31.0161
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_362a3"]
+radius = 31.0161
+
+[sub_resource type="LabelSettings" id="LabelSettings_a8ew5"]
+font_size = 30
+outline_size = 5
+outline_color = Color(0.979897, 0.894876, 7.70092e-07, 1)
+
+[node name="ArcShip" groups=["enemies"] instance=ExtResource("1_y7i0g")]
+collision_layer = 17
+script = ExtResource("2_o4juv")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_4yrp6")
+
+[node name="Sprite2D" parent="CollisionShape2D" index="1"]
+texture = ExtResource("2_sb5np")
+
+[node name="Mirror" parent="." index="1"]
+shape = SubResource("CircleShape2D_362a3")
+
+[node name="Sprite2D" parent="Mirror" index="1"]
+texture = ExtResource("2_sb5np")
+
+[node name="BoundsHitter" parent="." index="2"]
+collision_mask = 258
+
+[node name="Label" type="Label" parent="." index="3"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_a8ew5")
+
+[connection signal="direction_set" from="." to="." method="_on_direction_set"]
+[connection signal="area_entered" from="BoundsHitter" to="." method="_on_bounds_hitter_area_entered"]
+[connection signal="area_exited" from="BoundsHitter" to="." method="_on_bounds_hitter_area_exited"]

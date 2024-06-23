@@ -1,0 +1,184 @@
+[gd_scene load_steps=18 format=3 uid="uid://bahd2ckgau6or"]
+
+[ext_resource type="PackedScene" uid="uid://cxhkn3bp17dbv" path="res://player.tscn" id="1_8ra1s"]
+[ext_resource type="Script" path="res://main.gd" id="1_trjkq"]
+[ext_resource type="PackedScene" uid="uid://bkpoc1mrorc8e" path="res://asteroid.tscn" id="2_27s7w"]
+[ext_resource type="Texture2D" uid="uid://clshyyr7ucl7k" path="res://textures/space.png" id="2_cj5w0"]
+[ext_resource type="Script" path="res://PositionTester.gd" id="3_454rd"]
+[ext_resource type="Texture2D" uid="uid://bb12m2t6r7jfc" path="res://textures/red_stars.png" id="3_ttxof"]
+[ext_resource type="Texture2D" uid="uid://dypb7nsund5dk" path="res://textures/white_stars.png" id="4_rh1hf"]
+[ext_resource type="PackedScene" uid="uid://cnif2iskf5eav" path="res://world_boundary.tscn" id="4_s0ntt"]
+[ext_resource type="Script" path="res://location_buffer.gd" id="6_bpxa4"]
+[ext_resource type="PackedScene" uid="uid://cgsxeah68mwi5" path="res://arc_ship.tscn" id="10_r3bxc"]
+[ext_resource type="PackedScene" uid="uid://d0bw1vyly2b3o" path="res://bug_ship.tscn" id="11_0d41t"]
+[ext_resource type="PackedScene" uid="uid://d1x073soshnoq" path="res://bullet_ship.tscn" id="12_vq2ii"]
+[ext_resource type="PackedScene" uid="uid://damepr8xrat7m" path="res://hex_base.tscn" id="13_e0obx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vk8fy"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pogjp"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5xaf"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ud18n"]
+size = Vector2(10, 10)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_trjkq")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_repeat = 2
+motion_mirroring = Vector2(1000, 1000)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("2_cj5w0")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 2000)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_repeat = 2
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(1000, 1000)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("3_ttxof")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 2000)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_repeat = 2
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1000, 1000)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("4_rh1hf")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 2000)
+
+[node name="Player" parent="." instance=ExtResource("1_8ra1s")]
+position = Vector2(0, 0)
+
+[node name="Camera2D2" type="Camera2D" parent="Player"]
+
+[node name="PositionTester" type="Label" parent="Player"]
+visible = false
+offset_left = 25.0
+offset_top = -33.0
+offset_right = 65.0
+offset_bottom = -10.0
+text = "location: "
+script = ExtResource("3_454rd")
+
+[node name="TopBound" parent="." instance=ExtResource("4_s0ntt")]
+position = Vector2(0, -1000)
+rotation = 1.5708
+north_or_west = true
+
+[node name="RightBound" parent="." instance=ExtResource("4_s0ntt")]
+position = Vector2(2000, 0)
+vertical = true
+
+[node name="Bottombound" parent="." instance=ExtResource("4_s0ntt")]
+position = Vector2(0, 1000)
+rotation = 1.5708
+
+[node name="LeftBound" parent="." instance=ExtResource("4_s0ntt")]
+position = Vector2(-2000, 0)
+vertical = true
+north_or_west = true
+
+[node name="NorthBuffer" type="Area2D" parent="."]
+position = Vector2(0, -486)
+collision_layer = 4
+collision_mask = 64
+script = ExtResource("6_bpxa4")
+horizontal = true
+north_or_west = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NorthBuffer"]
+shape = SubResource("RectangleShape2D_vk8fy")
+
+[node name="EastBuffer" type="Area2D" parent="."]
+position = Vector2(864, 0)
+collision_layer = 4
+collision_mask = 64
+script = ExtResource("6_bpxa4")
+buffer_direction = 1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EastBuffer"]
+shape = SubResource("RectangleShape2D_pogjp")
+
+[node name="SouthBuffer" type="Area2D" parent="."]
+position = Vector2(0, 486)
+collision_layer = 4
+collision_mask = 64
+script = ExtResource("6_bpxa4")
+buffer_direction = 2
+horizontal = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SouthBuffer"]
+shape = SubResource("RectangleShape2D_h5xaf")
+
+[node name="WestBuffer" type="Area2D" parent="."]
+position = Vector2(-862, -5)
+collision_layer = 4
+collision_mask = 64
+script = ExtResource("6_bpxa4")
+buffer_direction = 3
+north_or_west = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WestBuffer"]
+shape = SubResource("RectangleShape2D_ud18n")
+
+[node name="Asteroid" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(1900, 900)
+
+[node name="Asteroid2" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(1900, -900)
+
+[node name="Asteroid3" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(-1900, -900)
+
+[node name="Asteroid4" parent="." instance=ExtResource("2_27s7w")]
+position = Vector2(-1900, 900)
+
+[node name="EnemyShip" parent="." instance=ExtResource("10_r3bxc")]
+position = Vector2(458, -229)
+collision_mask = 5
+
+[node name="BugShip" parent="." instance=ExtResource("11_0d41t")]
+position = Vector2(-873, 545)
+
+[node name="BulletShip" parent="." instance=ExtResource("12_vq2ii")]
+position = Vector2(217, -555)
+
+[node name="HexBase" parent="." instance=ExtResource("13_e0obx")]
+position = Vector2(913, 392)
+
+[connection signal="player_moved" from="." to="Player/PositionTester" method="_on_main_player_moved"]
+[connection signal="sent_location" from="Player" to="." method="_on_player_sent_location"]
+[connection signal="sent_location" from="Player" to="Player/PositionTester" method="_on_player_sent_location"]
+[connection signal="area_entered" from="NorthBuffer" to="NorthBuffer" method="_on_area_entered"]
+[connection signal="area_exited" from="NorthBuffer" to="NorthBuffer" method="_on_area_exited"]
+[connection signal="player_state_changed" from="NorthBuffer" to="." method="_on_north_buffer_player_state_changed"]
+[connection signal="area_entered" from="EastBuffer" to="EastBuffer" method="_on_area_entered"]
+[connection signal="area_exited" from="EastBuffer" to="EastBuffer" method="_on_area_exited"]
+[connection signal="player_state_changed" from="EastBuffer" to="." method="_on_east_buffer_player_state_changed"]
+[connection signal="area_entered" from="SouthBuffer" to="SouthBuffer" method="_on_area_entered"]
+[connection signal="area_exited" from="SouthBuffer" to="SouthBuffer" method="_on_area_exited"]
+[connection signal="player_state_changed" from="SouthBuffer" to="." method="_on_south_buffer_player_state_changed"]
+[connection signal="area_entered" from="WestBuffer" to="WestBuffer" method="_on_area_entered"]
+[connection signal="area_exited" from="WestBuffer" to="WestBuffer" method="_on_area_exited"]
+[connection signal="player_state_changed" from="WestBuffer" to="." method="_on_west_buffer_player_state_changed"]

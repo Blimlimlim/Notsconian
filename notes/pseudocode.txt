@@ -1,0 +1,44 @@
+from enemies perspective
+
+
+if player is NE
+	S enemies project N
+	W enemies project E
+	SW enemies project NE
+elif player is NW
+	S enemies N
+	E enemies W
+	SE enemies NW
+elif player is SE
+	N enemies S
+	W enemies E
+	NW enemies SE
+elif player is SW
+	N enemies S
+elif player is N
+elif player is E
+elif player is S
+elif player is W
+
+
+SIMPLIFIED
+
+if   p N:
+	S enemies project N
+	if   p E:
+		SW enemies project NE
+	elif p W:
+		SE enemies project NW
+elif p S:
+	N enemies project S
+	if   p E:
+		NW enemies project SE
+	elif p W:
+		NE enemies project SW
+elif p E:
+	W enemies project E
+elif p W:
+	E enemies project W
+
+
+

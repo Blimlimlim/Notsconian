@@ -1,0 +1,288 @@
+[gd_scene load_steps=23 format=3 uid="uid://damepr8xrat7m"]
+
+[ext_resource type="Script" path="res://hexbase.gd" id="1_4fbyq"]
+[ext_resource type="PackedScene" uid="uid://bkpoc1mrorc8e" path="res://asteroid.tscn" id="1_trg7o"]
+[ext_resource type="Script" path="res://hex_orb.gd" id="3_cxp81"]
+[ext_resource type="Texture2D" uid="uid://cytl4pg5wx71g" path="res://textures/base.png" id="4_1l3yh"]
+[ext_resource type="Texture2D" uid="uid://cckqdii3ikj8p" path="res://textures/base_splode0.png" id="4_rt2uw"]
+[ext_resource type="Texture2D" uid="uid://dm04c152v2ynw" path="res://textures/base_orb.png" id="5_csocc"]
+[ext_resource type="Texture2D" uid="uid://cvy0nwdqq6ayv" path="res://textures/base_splode1.png" id="5_fd41l"]
+[ext_resource type="Texture2D" uid="uid://by2myfdpnyjhs" path="res://textures/base_orb_damaged2.png" id="6_1oo6t"]
+[ext_resource type="Texture2D" uid="uid://de5ggsdg6q58n" path="res://textures/base_splode2.png" id="6_1qqld"]
+[ext_resource type="Texture2D" uid="uid://cmae6lilsf4ru" path="res://textures/base_orb_damaged.png" id="6_qds08"]
+[ext_resource type="Texture2D" uid="uid://b4nflxpinx7l0" path="res://textures/base_splode3.png" id="7_tb5jf"]
+[ext_resource type="Texture2D" uid="uid://dbwdq0p4a28p7" path="res://textures/base_splode4.png" id="8_fwlyu"]
+[ext_resource type="Texture2D" uid="uid://cucahmaas43is" path="res://textures/base_splode6.png" id="9_2n8gd"]
+[ext_resource type="Texture2D" uid="uid://c5dehrh3orlfl" path="res://textures/base_splode5.png" id="10_gtum3"]
+[ext_resource type="Texture2D" uid="uid://u8ughfmf7er8" path="res://textures/base_splode7.png" id="11_pwmss"]
+[ext_resource type="Script" path="res://shields.gd" id="16_yj268"]
+[ext_resource type="AudioStream" uid="uid://qhdk8esvyxmd" path="res://sound/u8/bigsplode.wav" id="17_sw715"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i48lp"]
+radius = 18.1108
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yd3ne"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rt2uw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fd41l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1qqld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tb5jf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fwlyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2n8gd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gtum3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_pwmss")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p4ry5"]
+radius = 18.0278
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0t15p"]
+radius = 32.0624
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kueeq"]
+radius = 32.0156
+
+[node name="HexBase" type="Node2D"]
+script = ExtResource("1_4fbyq")
+metadata/_edit_group_ = true
+
+[node name="Core" parent="." instance=ExtResource("1_trg7o")]
+script = ExtResource("3_cxp81")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="Core" index="0"]
+shape = SubResource("CircleShape2D_i48lp")
+
+[node name="AnimatedSprite2D" parent="Core/CollisionShape2D" index="0"]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_yd3ne")
+animation = &"default"
+
+[node name="Sprite2D" parent="Core/CollisionShape2D" index="1"]
+texture = ExtResource("4_1l3yh")
+
+[node name="ExplodeSound" parent="Core/CollisionShape2D" index="2"]
+stream = ExtResource("17_sw715")
+volume_db = 1.0
+max_polyphony = 2
+
+[node name="Mirror" parent="Core" index="1"]
+shape = SubResource("CircleShape2D_p4ry5")
+
+[node name="AnimatedSprite2D" parent="Core/Mirror" index="0"]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_yd3ne")
+animation = &"default"
+
+[node name="Sprite2D" parent="Core/Mirror" index="1"]
+texture = ExtResource("4_1l3yh")
+
+[node name="ExplodeSound" parent="Core/Mirror" index="2"]
+stream = ExtResource("17_sw715")
+volume_db = 1.0
+max_polyphony = 2
+
+[node name="Orb1" parent="." instance=ExtResource("1_trg7o")]
+position = Vector2(38, -84)
+script = ExtResource("3_cxp81")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="Orb1" index="0"]
+shape = SubResource("CircleShape2D_0t15p")
+
+[node name="SpriteDamage" type="Sprite2D" parent="Orb1/CollisionShape2D" index="0"]
+texture = ExtResource("6_qds08")
+flip_h = true
+flip_v = true
+
+[node name="Sprite2D" parent="Orb1/CollisionShape2D" index="2"]
+texture = ExtResource("5_csocc")
+
+[node name="ExplodeSound" parent="Orb1/CollisionShape2D" index="3"]
+volume_db = 3.0
+
+[node name="Mirror" parent="Orb1" index="1"]
+shape = SubResource("CircleShape2D_kueeq")
+
+[node name="SpriteDamage" type="Sprite2D" parent="Orb1/Mirror" index="0"]
+texture = ExtResource("6_qds08")
+flip_h = true
+flip_v = true
+
+[node name="Sprite2D" parent="Orb1/Mirror" index="2"]
+texture = ExtResource("5_csocc")
+
+[node name="ExplodeSound" parent="Orb1/Mirror" index="3"]
+volume_db = 10.0
+
+[node name="Orb2" parent="." instance=ExtResource("1_trg7o")]
+position = Vector2(90, 0)
+script = ExtResource("3_cxp81")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="Orb2" index="0"]
+shape = SubResource("CircleShape2D_0t15p")
+
+[node name="SpriteDamage" type="Sprite2D" parent="Orb2/CollisionShape2D" index="0"]
+texture = ExtResource("6_1oo6t")
+flip_h = true
+
+[node name="Sprite2D" parent="Orb2/CollisionShape2D" index="2"]
+texture = ExtResource("5_csocc")
+
+[node name="Mirror" parent="Orb2" index="1"]
+shape = SubResource("CircleShape2D_kueeq")
+
+[node name="SpriteDamage" type="Sprite2D" parent="Orb2/Mirror" index="0"]
+texture = ExtResource("6_1oo6t")
+flip_h = true
+
+[node name="Sprite2D" parent="Orb2/Mirror" index="2"]
+texture = ExtResource("5_csocc")
+
+[node name="Orb3" parent="." instance=ExtResource("1_trg7o")]
+position = Vector2(38, 84)
+script = ExtResource("3_cxp81")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="Orb3" index="0"]
+shape = SubResource("CircleShape2D_0t15p")
+
+[node name="SpriteDamage" type="Sprite2D" parent="Orb3/CollisionShape2D" index="0"]
+texture = ExtResource("6_qds08")
+flip_h = true
+
+[node name="Sprite2D" parent="Orb3/CollisionShape2D" index="2"]
+texture = ExtResource("5_csocc")
+
+[node name="Mirror" parent="Orb3" index="1"]
+shape = SubResource("CircleShape2D_kueeq")
+
+[node name="SpriteDamage" type="Sprite2D" parent="Orb3/Mirror" index="0"]
+texture = ExtResource("6_qds08")
+flip_h = true
+
+[node name="Sprite2D" parent="Orb3/Mirror" index="2"]
+texture = ExtResource("5_csocc")
+
+[node name="Orb4" parent="." instance=ExtResource("1_trg7o")]
+position = Vector2(-38, 84)
+script = ExtResource("3_cxp81")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="Orb4" index="0"]
+shape = SubResource("CircleShape2D_0t15p")
+
+[node name="SpriteDamage" type="Sprite2D" parent="Orb4/CollisionShape2D" index="0"]
+texture = ExtResource("6_qds08")
+
+[node name="Sprite2D" parent="Orb4/CollisionShape2D" index="2"]
+texture = ExtResource("5_csocc")
+
+[node name="Mirror" parent="Orb4" index="1"]
+shape = SubResource("CircleShape2D_kueeq")
+
+[node name="SpriteDamage" type="Sprite2D" parent="Orb4/Mirror" index="0"]
+texture = ExtResource("6_qds08")
+
+[node name="Sprite2D" parent="Orb4/Mirror" index="2"]
+texture = ExtResource("5_csocc")
+
+[node name="Orb5" parent="." instance=ExtResource("1_trg7o")]
+position = Vector2(-90, 0)
+script = ExtResource("3_cxp81")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="Orb5" index="0"]
+shape = SubResource("CircleShape2D_0t15p")
+
+[node name="SpriteDamage" type="Sprite2D" parent="Orb5/CollisionShape2D" index="0"]
+texture = ExtResource("6_1oo6t")
+
+[node name="Sprite2D" parent="Orb5/CollisionShape2D" index="2"]
+texture = ExtResource("5_csocc")
+
+[node name="Mirror" parent="Orb5" index="1"]
+shape = SubResource("CircleShape2D_kueeq")
+
+[node name="SpriteDamage" type="Sprite2D" parent="Orb5/Mirror" index="0"]
+texture = ExtResource("6_1oo6t")
+
+[node name="Sprite2D" parent="Orb5/Mirror" index="2"]
+texture = ExtResource("5_csocc")
+
+[node name="Orb6" parent="." instance=ExtResource("1_trg7o")]
+position = Vector2(-38, -84)
+script = ExtResource("3_cxp81")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="Orb6" index="0"]
+shape = SubResource("CircleShape2D_0t15p")
+
+[node name="SpriteDamage" type="Sprite2D" parent="Orb6/CollisionShape2D" index="0"]
+texture = ExtResource("6_qds08")
+flip_v = true
+
+[node name="Sprite2D" parent="Orb6/CollisionShape2D" index="2"]
+texture = ExtResource("5_csocc")
+
+[node name="Mirror" parent="Orb6" index="1"]
+shape = SubResource("CircleShape2D_kueeq")
+
+[node name="SpriteDamage" type="Sprite2D" parent="Orb6/Mirror" index="0"]
+texture = ExtResource("6_qds08")
+flip_v = true
+
+[node name="Sprite2D" parent="Orb6/Mirror" index="2"]
+texture = ExtResource("5_csocc")
+
+[node name="Shields" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 9
+script = ExtResource("16_yj268")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Shields"]
+polygon = PackedVector2Array(-19, -102, -19, 104, -113, 63, -50, 0, -114, -65)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Shields"]
+polygon = PackedVector2Array(19, -102, 20, 102, 113, 63, 50, 0, 114, -65)
+
+[connection signal="compromised" from="." to="." method="_on_compromised"]
+[connection signal="named_core" from="." to="Core" method="_on_hex_base_named_core"]
+[connection signal="area_entered" from="Core" to="." method="_on_core_area_entered"]
+[connection signal="animation_finished" from="Core/CollisionShape2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="Core/Mirror/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Orb1" to="." method="_on_orb_area_entered"]
+[connection signal="area_entered" from="Orb2" to="." method="_on_orb_area_entered"]
+[connection signal="area_entered" from="Orb3" to="." method="_on_orb_area_entered"]
+[connection signal="area_entered" from="Orb4" to="." method="_on_orb_area_entered"]
+[connection signal="area_entered" from="Orb5" to="." method="_on_orb_area_entered"]
+[connection signal="area_entered" from="Orb6" to="." method="_on_orb_area_entered"]
+
+[editable path="Core"]
+[editable path="Orb1"]
+[editable path="Orb2"]
+[editable path="Orb3"]
+[editable path="Orb4"]
+[editable path="Orb5"]
+[editable path="Orb6"]

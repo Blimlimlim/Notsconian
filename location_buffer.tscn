@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://wpmqm3mo7ut0"]
+
+[ext_resource type="Script" path="res://location_buffer.gd" id="1_fpgmi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfa3o"]
+resource_local_to_scene = true
+size = Vector2(500, 500)
+
+[node name="LocationBuffer" type="Area2D"]
+collision_layer = 4
+collision_mask = 64
+script = ExtResource("1_fpgmi")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rfa3o")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

@@ -21,9 +21,8 @@ All in game art and sound was created by myself as well. I used Libresprite, a f
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
 * [Godot Docs](https://docs.godotengine.org/en/stable/index.html)
-* [Web Site Name](http://url.link.goes.here)
+* [Godot Docs Vecotor Math intro](https://docs.godotengine.org/en/stable/tutorials/math/vector_math.html)
 
 # Future Work
 

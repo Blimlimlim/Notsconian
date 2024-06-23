@@ -1,6 +1,17 @@
 # Overview
 
+![Hex Base](./textures/base.png)
+
 This is Notsconian. Its a game I made in Godot engine modeled after the the arcade classic, Bosconian. Upon starting, you the player take control of a starship to fight the evil aliens (story in progress)!! The ship flies forward automatically. You control the ship's direction with WASD. Press either 4 on the number pad or 'j' if you don't have one to fire a purple laser both forward and backwards simultaniously. Watch out, space is dangerous. There are astroids, alien craft, and space stations out there that will spell your demise if you are hit by them. Destroy the space stations, HEX BASES, to progress to the next level. Two not fleshed out levels are currently implemented. Destroy the bases by either destroying the six orbs surrounding them, or getting a narrow shot down the center to hit their core. Upon completing a level, the next one starts automatically. Die, and the game will quit. 
+
+### Enemy Ships
+![ArcShip](./textures/ark_ship.png) Arcship --- Faster than you and pretty agile. Requires some maneuvaring to escape.
+
+![BugShip](./textures/bug_ship.png) Bugship --- Slow but the most agile of the enemies.
+
+![BulletShip](./textures/bullet_ship.png) Bulletship --- Rocket fast but the least agile of the three. Just move out of the way!
+
+![????]() COMING SOON --- Who is this flying away? Can't be important may as well igor-...
 
 The game is not yet feature complete but it will get there eventually. 
 
@@ -16,7 +27,7 @@ I wanted to learn a game engine and make a little bigger project than I usually 
 This project was made in Godot engine. I did all the scripting with GDscript, Godot's own scripting language with python style syntax. 
 Everything else is done in Godot's editor, a powerful tool with which to structure your game.
 
-## Art
+## ![](textures\player_splode1.png)Art 
 All in game art and sound was created by myself as well. I used Libresprite, a free and open source distro of Asesprite for all the visuals.  I used Anvil Studio (freeware) and Audacity (free and open) to create the sound effects.
 
 # Useful Websites
@@ -35,3 +46,7 @@ All in game art and sound was created by myself as well. I used Libresprite, a f
 * Add low quality voice lines
 * Add HUD for radar (minimap)
 * Add more unique explosion animations and sounds. More sound effects in general as features increase.
+* Add points system
+
+
+![](textures\base_splode2.png)

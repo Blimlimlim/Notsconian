@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwl7sc1aq4pg3"]
+
+[ext_resource type="PackedScene" uid="uid://bahd2ckgau6or" path="res://stage.tscn" id="1_mobb7"]
+[ext_resource type="PackedScene" uid="uid://damepr8xrat7m" path="res://hex_base.tscn" id="2_ims7k"]
+[ext_resource type="PackedScene" uid="uid://bkpoc1mrorc8e" path="res://asteroid.tscn" id="3_yjf68"]
+
+[node name="Stage3" instance=ExtResource("1_mobb7")]
+
+[node name="HexBase1" parent="." index="12" instance=ExtResource("2_ims7k")]
+position = Vector2(-450, -385)
+
+[node name="HexBase2" parent="." index="13" instance=ExtResource("2_ims7k")]
+position = Vector2(-447, -56)
+
+[node name="HexBase3" parent="." index="14" instance=ExtResource("2_ims7k")]
+position = Vector2(-454, -717)
+
+[node name="HexBase4" parent="." index="16" instance=ExtResource("2_ims7k")]
+position = Vector2(-454, 265)
+
+[node name="HexBase5" parent="." index="17" instance=ExtResource("2_ims7k")]
+position = Vector2(-462, 608)
+
+[node name="Asteroid1" parent="." index="18" instance=ExtResource("3_yjf68")]
+position = Vector2(-47, -697)
+
+[node name="Asteroid2" parent="." index="19" instance=ExtResource("3_yjf68")]
+position = Vector2(198, 515)
+
+[node name="Asteroid3" parent="." index="20" instance=ExtResource("3_yjf68")]
+position = Vector2(93, -852)
+
+[node name="Asteroid4" parent="." index="21" instance=ExtResource("3_yjf68")]
+position = Vector2(-224, 723)
+
+[node name="Asteroid5" parent="." index="22" instance=ExtResource("3_yjf68")]
+position = Vector2(-134, 553)
+
+[node name="Asteroid6" parent="." index="23" instance=ExtResource("3_yjf68")]
+position = Vector2(183, 247)
+
+[node name="Asteroid7" parent="." index="24" instance=ExtResource("3_yjf68")]
+position = Vector2(232, -142)
+
+[node name="Asteroid8" parent="." index="25" instance=ExtResource("3_yjf68")]
+position = Vector2(274, -720)
+
+[node name="Asteroid9" parent="." index="26" instance=ExtResource("3_yjf68")]
+position = Vector2(183, -414)
+
+[node name="Asteroid10" parent="." index="27" instance=ExtResource("3_yjf68")]
+position = Vector2(-84, 247)
+
+[node name="Asteroid11" parent="." index="28" instance=ExtResource("3_yjf68")]
+position = Vector2(-115, -554)
+
+[node name="Asteroid12" parent="." index="29" instance=ExtResource("3_yjf68")]
+position = Vector2(-141, -818)
+
+[node name="Asteroid13" parent="." index="30" instance=ExtResource("3_yjf68")]
+position = Vector2(93, 745)
+
+[node name="Asteroid14" parent="." index="31" instance=ExtResource("3_yjf68")]
+position = Vector2(-153, -1025)
+
+[node name="Asteroid15" parent="." index="32" instance=ExtResource("3_yjf68")]
+position = Vector2(-141, -236)

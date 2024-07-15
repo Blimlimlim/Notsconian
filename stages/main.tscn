@@ -1,12 +1,129 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6eojanpxe21e"]
+[gd_scene load_steps=10 format=3 uid="uid://b6eojanpxe21e"]
 
 [ext_resource type="Script" path="res://stages/main.gd" id="1_641ga"]
+[ext_resource type="Texture2D" uid="uid://n6ucnnitcg2k" path="res://textures/arrowbutton.png" id="2_elnk3"]
+[ext_resource type="Texture2D" uid="uid://csqjl88g2qi4" path="res://textures/arrowbuttonpress.png" id="3_onr85"]
+[ext_resource type="Texture2D" uid="uid://uff0raxfceee" path="res://textures/firebutton.png" id="4_q3724"]
+[ext_resource type="Texture2D" uid="uid://c8xj4poto20kv" path="res://textures/firebuttonpress.png" id="5_8qlg0"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_1lg4e"]
+points = PackedVector2Array(0, -35, 84, -20, 55, 50, 0, 64, -55, 50, -84, -20)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_l34gj"]
+points = PackedVector2Array(80, 80, 95, 0, 80, -80, 0, -95, -80, -80, -95, 0, -80, 80, 0, 95)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0punb"]
+font_size = 146
+
+[sub_resource type="LabelSettings" id="LabelSettings_8yqw8"]
+font_size = 45
 
 [node name="Main" type="Node"]
 script = ExtResource("1_641ga")
 
-[node name="QuitTimer" type="Timer" parent="."]
-wait_time = 3.5
+[node name="TitleTimer" type="Timer" parent="."]
+wait_time = 12.5
 one_shot = true
 
+[node name="QuitTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="NextStageTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="FireButton" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(1243, 359)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("4_q3724")
+texture_pressed = ExtResource("5_8qlg0")
+action = "Fire"
+visibility_mode = 1
+
+[node name="ButtonPad" type="Node2D" parent="CanvasLayer"]
+position = Vector2(173, 406)
+scale = Vector2(1.75, 1.75)
+metadata/_edit_group_ = true
+
+[node name="UpButton" type="TouchScreenButton" parent="CanvasLayer/ButtonPad"]
+position = Vector2(-32, -96)
+texture_normal = ExtResource("2_elnk3")
+texture_pressed = ExtResource("3_onr85")
+shape = SubResource("ConvexPolygonShape2D_1lg4e")
+passby_press = true
+action = "faceup"
+visibility_mode = 1
+
+[node name="RightButton" type="TouchScreenButton" parent="CanvasLayer/ButtonPad"]
+position = Vector2(96, -32)
+rotation = 1.57079
+texture_normal = ExtResource("2_elnk3")
+texture_pressed = ExtResource("3_onr85")
+shape = SubResource("ConvexPolygonShape2D_1lg4e")
+passby_press = true
+action = "faceright"
+visibility_mode = 1
+
+[node name="DownButton" type="TouchScreenButton" parent="CanvasLayer/ButtonPad"]
+position = Vector2(32, 96)
+rotation = 3.14159
+texture_normal = ExtResource("2_elnk3")
+texture_pressed = ExtResource("3_onr85")
+shape = SubResource("ConvexPolygonShape2D_1lg4e")
+passby_press = true
+action = "facedown"
+visibility_mode = 1
+
+[node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer/ButtonPad"]
+position = Vector2(-96, 32)
+rotation = -1.57079
+texture_normal = ExtResource("2_elnk3")
+texture_pressed = ExtResource("3_onr85")
+shape = SubResource("ConvexPolygonShape2D_1lg4e")
+passby_press = true
+action = "faceleft"
+visibility_mode = 1
+
+[node name="AnyDirButton" type="TouchScreenButton" parent="CanvasLayer/ButtonPad"]
+shape = SubResource("ConvexPolygonShape2D_l34gj")
+passby_press = true
+action = "face_direction"
+visibility_mode = 1
+
+[node name="FinalScore" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 463.0
+offset_top = 81.0
+offset_right = 873.0
+offset_bottom = 281.0
+text = "Score"
+label_settings = SubResource("LabelSettings_0punb")
+horizontal_alignment = 2
+
+[node name="Message" type="Label" parent="CanvasLayer"]
+offset_left = 71.0
+offset_top = 56.0
+offset_right = 111.0
+offset_bottom = 79.0
+text = "Stage"
+label_settings = SubResource("LabelSettings_8yqw8")
+
+[node name="Lives" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.678431)
+offset_left = 1102.0
+offset_top = 55.0
+offset_right = 1315.0
+offset_bottom = 118.0
+scale = Vector2(0.6, 0.6)
+text = "Ships Left"
+label_settings = SubResource("LabelSettings_8yqw8")
+
 [connection signal="timeout" from="QuitTimer" to="." method="_on_quit_timer_timeout"]
+[connection signal="timeout" from="NextStageTimer" to="." method="_on_next_stage_timer_timeout"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

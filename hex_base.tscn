@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://damepr8xrat7m"]
+[gd_scene load_steps=41 format=3 uid="uid://damepr8xrat7m"]
 
 [ext_resource type="Script" path="res://hexbase.gd" id="1_4fbyq"]
 [ext_resource type="PackedScene" uid="uid://bkpoc1mrorc8e" path="res://asteroid.tscn" id="1_trg7o"]
@@ -15,8 +15,14 @@
 [ext_resource type="Texture2D" uid="uid://cucahmaas43is" path="res://textures/base_splode6.png" id="9_2n8gd"]
 [ext_resource type="Texture2D" uid="uid://c5dehrh3orlfl" path="res://textures/base_splode5.png" id="10_gtum3"]
 [ext_resource type="Texture2D" uid="uid://u8ughfmf7er8" path="res://textures/base_splode7.png" id="11_pwmss"]
+[ext_resource type="Texture2D" uid="uid://bsyvg5pywambk" path="res://textures/orb_splode0.png" id="15_iq684"]
+[ext_resource type="Texture2D" uid="uid://n87bhchqyhcx" path="res://textures/orb_splode1.png" id="16_d3lax"]
 [ext_resource type="Script" path="res://shields.gd" id="16_yj268"]
+[ext_resource type="Texture2D" uid="uid://dka5aiosuvyin" path="res://textures/orb_splode2.png" id="17_8stvv"]
 [ext_resource type="AudioStream" uid="uid://qhdk8esvyxmd" path="res://sound/u8/bigsplode.wav" id="17_sw715"]
+[ext_resource type="Texture2D" uid="uid://i2dwco6eaj23" path="res://textures/orb_splode3.png" id="18_dsvm1"]
+[ext_resource type="Texture2D" uid="uid://cvyct4l6y5rgq" path="res://textures/orb_splode4.png" id="19_rmuqo"]
+[ext_resource type="Texture2D" uid="uid://cdl4h6swp5kle" path="res://textures/orb_splode5.png" id="20_bxh01"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i48lp"]
 radius = 18.1108
@@ -59,10 +65,322 @@ radius = 18.0278
 [sub_resource type="CircleShape2D" id="CircleShape2D_0t15p"]
 radius = 32.0624
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_lnei4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_iq684")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d3lax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8stvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dsvm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rmuqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bxh01")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_kueeq"]
 radius = 32.0156
 
-[node name="HexBase" type="Node2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_kriba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_iq684")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d3lax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8stvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dsvm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rmuqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bxh01")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6u803"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_iq684")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d3lax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8stvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dsvm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rmuqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bxh01")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kl0c0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_iq684")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d3lax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8stvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dsvm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rmuqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bxh01")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vtp70"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_iq684")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d3lax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8stvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dsvm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rmuqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bxh01")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wirde"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_iq684")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d3lax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8stvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dsvm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rmuqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bxh01")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mifhq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_iq684")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d3lax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8stvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dsvm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rmuqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bxh01")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ymc0t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_iq684")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d3lax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8stvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dsvm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rmuqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bxh01")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k2o3e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_iq684")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d3lax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8stvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dsvm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rmuqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bxh01")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dusvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_iq684")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d3lax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8stvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dsvm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rmuqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bxh01")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3hx37"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_iq684")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d3lax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8stvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dsvm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rmuqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bxh01")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnmqp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_iq684")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d3lax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8stvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dsvm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rmuqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bxh01")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
+
+[node name="HexBase" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_4fbyq")
 metadata/_edit_group_ = true
 
@@ -115,6 +433,10 @@ texture = ExtResource("6_qds08")
 flip_h = true
 flip_v = true
 
+[node name="AnimatedSprite2D" parent="Orb1/CollisionShape2D" index="1"]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_lnei4")
+
 [node name="Sprite2D" parent="Orb1/CollisionShape2D" index="2"]
 texture = ExtResource("5_csocc")
 
@@ -129,11 +451,19 @@ texture = ExtResource("6_qds08")
 flip_h = true
 flip_v = true
 
+[node name="AnimatedSprite2D" parent="Orb1/Mirror" index="1"]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_kriba")
+
 [node name="Sprite2D" parent="Orb1/Mirror" index="2"]
 texture = ExtResource("5_csocc")
 
 [node name="ExplodeSound" parent="Orb1/Mirror" index="3"]
 volume_db = 10.0
+
+[node name="FireCooldown" type="Timer" parent="Orb1"]
+wait_time = 1.25
+one_shot = true
 
 [node name="Orb2" parent="." instance=ExtResource("1_trg7o")]
 position = Vector2(90, 0)
@@ -147,6 +477,10 @@ shape = SubResource("CircleShape2D_0t15p")
 texture = ExtResource("6_1oo6t")
 flip_h = true
 
+[node name="AnimatedSprite2D" parent="Orb2/CollisionShape2D" index="1"]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_6u803")
+
 [node name="Sprite2D" parent="Orb2/CollisionShape2D" index="2"]
 texture = ExtResource("5_csocc")
 
@@ -157,8 +491,16 @@ shape = SubResource("CircleShape2D_kueeq")
 texture = ExtResource("6_1oo6t")
 flip_h = true
 
+[node name="AnimatedSprite2D" parent="Orb2/Mirror" index="1"]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_kl0c0")
+
 [node name="Sprite2D" parent="Orb2/Mirror" index="2"]
 texture = ExtResource("5_csocc")
+
+[node name="FireCooldown" type="Timer" parent="Orb2"]
+wait_time = 1.25
+one_shot = true
 
 [node name="Orb3" parent="." instance=ExtResource("1_trg7o")]
 position = Vector2(38, 84)
@@ -172,6 +514,10 @@ shape = SubResource("CircleShape2D_0t15p")
 texture = ExtResource("6_qds08")
 flip_h = true
 
+[node name="AnimatedSprite2D" parent="Orb3/CollisionShape2D" index="1"]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_vtp70")
+
 [node name="Sprite2D" parent="Orb3/CollisionShape2D" index="2"]
 texture = ExtResource("5_csocc")
 
@@ -182,8 +528,16 @@ shape = SubResource("CircleShape2D_kueeq")
 texture = ExtResource("6_qds08")
 flip_h = true
 
+[node name="AnimatedSprite2D" parent="Orb3/Mirror" index="1"]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_wirde")
+
 [node name="Sprite2D" parent="Orb3/Mirror" index="2"]
 texture = ExtResource("5_csocc")
+
+[node name="FireCooldown" type="Timer" parent="Orb3"]
+wait_time = 1.25
+one_shot = true
 
 [node name="Orb4" parent="." instance=ExtResource("1_trg7o")]
 position = Vector2(-38, 84)
@@ -196,6 +550,10 @@ shape = SubResource("CircleShape2D_0t15p")
 [node name="SpriteDamage" type="Sprite2D" parent="Orb4/CollisionShape2D" index="0"]
 texture = ExtResource("6_qds08")
 
+[node name="AnimatedSprite2D" parent="Orb4/CollisionShape2D" index="1"]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_mifhq")
+
 [node name="Sprite2D" parent="Orb4/CollisionShape2D" index="2"]
 texture = ExtResource("5_csocc")
 
@@ -205,8 +563,16 @@ shape = SubResource("CircleShape2D_kueeq")
 [node name="SpriteDamage" type="Sprite2D" parent="Orb4/Mirror" index="0"]
 texture = ExtResource("6_qds08")
 
+[node name="AnimatedSprite2D" parent="Orb4/Mirror" index="1"]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_ymc0t")
+
 [node name="Sprite2D" parent="Orb4/Mirror" index="2"]
 texture = ExtResource("5_csocc")
+
+[node name="FireCooldown" type="Timer" parent="Orb4"]
+wait_time = 1.25
+one_shot = true
 
 [node name="Orb5" parent="." instance=ExtResource("1_trg7o")]
 position = Vector2(-90, 0)
@@ -219,6 +585,10 @@ shape = SubResource("CircleShape2D_0t15p")
 [node name="SpriteDamage" type="Sprite2D" parent="Orb5/CollisionShape2D" index="0"]
 texture = ExtResource("6_1oo6t")
 
+[node name="AnimatedSprite2D" parent="Orb5/CollisionShape2D" index="1"]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_k2o3e")
+
 [node name="Sprite2D" parent="Orb5/CollisionShape2D" index="2"]
 texture = ExtResource("5_csocc")
 
@@ -228,8 +598,16 @@ shape = SubResource("CircleShape2D_kueeq")
 [node name="SpriteDamage" type="Sprite2D" parent="Orb5/Mirror" index="0"]
 texture = ExtResource("6_1oo6t")
 
+[node name="AnimatedSprite2D" parent="Orb5/Mirror" index="1"]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_dusvn")
+
 [node name="Sprite2D" parent="Orb5/Mirror" index="2"]
 texture = ExtResource("5_csocc")
+
+[node name="FireCooldown" type="Timer" parent="Orb5"]
+wait_time = 1.25
+one_shot = true
 
 [node name="Orb6" parent="." instance=ExtResource("1_trg7o")]
 position = Vector2(-38, -84)
@@ -243,6 +621,10 @@ shape = SubResource("CircleShape2D_0t15p")
 texture = ExtResource("6_qds08")
 flip_v = true
 
+[node name="AnimatedSprite2D" parent="Orb6/CollisionShape2D" index="1"]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_3hx37")
+
 [node name="Sprite2D" parent="Orb6/CollisionShape2D" index="2"]
 texture = ExtResource("5_csocc")
 
@@ -253,8 +635,16 @@ shape = SubResource("CircleShape2D_kueeq")
 texture = ExtResource("6_qds08")
 flip_v = true
 
+[node name="AnimatedSprite2D" parent="Orb6/Mirror" index="1"]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_qnmqp")
+
 [node name="Sprite2D" parent="Orb6/Mirror" index="2"]
 texture = ExtResource("5_csocc")
+
+[node name="FireCooldown" type="Timer" parent="Orb6"]
+wait_time = 1.25
+one_shot = true
 
 [node name="Shields" type="Area2D" parent="."]
 collision_layer = 512
@@ -268,6 +658,12 @@ polygon = PackedVector2Array(-19, -102, -19, 104, -113, 63, -50, 0, -114, -65)
 polygon = PackedVector2Array(19, -102, 20, 102, 113, 63, 50, 0, 114, -65)
 
 [connection signal="compromised" from="." to="." method="_on_compromised"]
+[connection signal="detected_player" from="." to="Orb1" method="_on_hex_base_detected_player"]
+[connection signal="detected_player" from="." to="Orb2" method="_on_hex_base_detected_player"]
+[connection signal="detected_player" from="." to="Orb3" method="_on_hex_base_detected_player"]
+[connection signal="detected_player" from="." to="Orb4" method="_on_hex_base_detected_player"]
+[connection signal="detected_player" from="." to="Orb5" method="_on_hex_base_detected_player"]
+[connection signal="detected_player" from="." to="Orb6" method="_on_hex_base_detected_player"]
 [connection signal="named_core" from="." to="Core" method="_on_hex_base_named_core"]
 [connection signal="area_entered" from="Core" to="." method="_on_core_area_entered"]
 [connection signal="animation_finished" from="Core/CollisionShape2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

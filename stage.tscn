@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bahd2ckgau6or"]
+[gd_scene load_steps=14 format=3 uid="uid://bahd2ckgau6or"]
 
 [ext_resource type="Script" path="res://stage.gd" id="1_b58sr"]
 [ext_resource type="Texture2D" uid="uid://clshyyr7ucl7k" path="res://textures/space.png" id="2_8hj24"]
@@ -8,6 +8,11 @@
 [ext_resource type="Script" path="res://position_tester.gd" id="6_uxvc2"]
 [ext_resource type="PackedScene" uid="uid://cnif2iskf5eav" path="res://world_boundary.tscn" id="7_4yx2e"]
 [ext_resource type="Script" path="res://location_buffer.gd" id="8_qljwx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hxb0q"]
+font_size = 21
+outline_size = 7
+outline_color = Color(0.336608, 0.336608, 0.336608, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vk8fy"]
 size = Vector2(10, 10)
@@ -23,6 +28,35 @@ size = Vector2(10, 10)
 
 [node name="Stage" type="Node"]
 script = ExtResource("1_b58sr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ConditionColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 1100.0
+offset_top = 25.0
+offset_right = 1236.0
+offset_bottom = 55.0
+color = Color(0.0235294, 1, 0.0235294, 1)
+
+[node name="ConditionLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1100.0
+offset_top = 25.0
+offset_right = 1223.0
+offset_bottom = 55.0
+text = "Code: Green"
+label_settings = SubResource("LabelSettings_hxb0q")
+uppercase = true
+
+[node name="BlinkTimer" type="Timer" parent="CanvasLayer"]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[node name="ConditionTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -138,11 +172,10 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WestBuffer"]
 shape = SubResource("RectangleShape2D_ud18n")
 
-[node name="NextStageTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-
 [connection signal="player_moved" from="." to="Player/PositionTester" method="_on_main_player_moved"]
+[connection signal="timeout" from="CanvasLayer/BlinkTimer" to="." method="_on_blink_timer_timeout"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="ConditionTimer" to="." method="_on_condition_timer_timeout"]
 [connection signal="sent_location" from="Player" to="." method="_on_player_sent_location"]
 [connection signal="sent_location" from="Player" to="Player/PositionTester" method="_on_player_sent_location"]
 [connection signal="area_entered" from="NorthBuffer" to="NorthBuffer" method="_on_area_entered"]
@@ -157,4 +190,3 @@ one_shot = true
 [connection signal="area_entered" from="WestBuffer" to="WestBuffer" method="_on_area_entered"]
 [connection signal="area_exited" from="WestBuffer" to="WestBuffer" method="_on_area_exited"]
 [connection signal="player_state_changed" from="WestBuffer" to="." method="_on_west_buffer_player_state_changed"]
-[connection signal="timeout" from="NextStageTimer" to="." method="_on_next_stage_timer_timeout"]

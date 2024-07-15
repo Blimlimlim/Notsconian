@@ -2,16 +2,21 @@ extends Area2D
 class_name Base_Obstacle
 
 var area_type = "obstacle"
+var points: int = 15
+#two properties to determine which direction to project illusory mirror
 var entity_buffer_location = 0b0000 #WSEN (cardinal direction order) Represents which buffers this Area2D is inside
 var recent_player_location = 0b0000
 var free_after_destruct: bool = true
+var is_destroyed: bool = false
 
+signal destroyed_by_player(points: int)
+signal exploded
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$AnimatedSprite2D.hide()
 	hide_animations()
-	#move_mirror(Globals.S)
+	move_mirror(Globals.S)
 	#position.y += Globals.MAP_HEIGHT # start with object outside the map. (see _on_initial_timer_timeout)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,8 +32,13 @@ func play_explode(collision_nodepath, animation_nodepath,sprite_nodepath):
 	animation_nodepath.play("explode")
 	sprite_nodepath.hide()
 	collision_nodepath.set_deferred("disabled", true)
-	$CollisionShape2D/ExplodeSound.play()
-	$Mirror/ExplodeSound.play()
+	var explode_sound1 = $CollisionShape2D/ExplodeSound
+	var explode_sound2 = $Mirror/ExplodeSound
+	var pitch = Randomness.random.randf_range(0.8, 1.2)
+	explode_sound1.pitch_scale = pitch
+	explode_sound2.pitch_scale = pitch
+	explode_sound1.play()
+	explode_sound2.play()
 	
 	
 func move_mirror(cardinal_direction: Vector2):
@@ -100,10 +110,22 @@ func _on_area_entered(area):
 		#$AnimatedSprite2D.play("explode")
 		#$Sprite2D.hide() # hide sprite so only animation is visible
 		#$CollisionShape2D.set_deferred("disabled", true) # disable collision
+		if area.area_type == "beam":
+			is_destroyed = true
+			destroyed_by_player.emit(points)
+			var packed_label = load("res://points_label.tscn")
+			var points_label = packed_label.instantiate() # create label to display points
+			points_label.position = position + Vector2(0, -40) #set to position of obstacle
+			points_label.text = str(points)
+			add_sibling(points_label) # add as a sibling to this obstacle
+			points_label.get_node("Timer").start()
+			
+		exploded.emit()
 		play_explode($CollisionShape2D, $CollisionShape2D/AnimatedSprite2D, $CollisionShape2D/Sprite2D)
 		play_explode($Mirror, $Mirror/AnimatedSprite2D, $Mirror/Sprite2D)
 		
-		# TODO a hacky fix to a later inheritance problem. Redo later
+		
+		# TODO a hacky fix to a later inheritance problem. Redo later. Add this to hex_orb.gd?
 		if $CollisionShape2D/SpriteDamage != null:
 			$CollisionShape2D/SpriteDamage.show()
 		if $Mirror/SpriteDamage != null:

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi8ksdferlnds"]
+
+[ext_resource type="PackedScene" uid="uid://bil62spnysneb" path="res://beam.tscn" id="1_wrv6l"]
+[ext_resource type="Texture2D" uid="uid://d27c0jxwvgssc" path="res://textures/base_bomb.png" id="2_d707o"]
+[ext_resource type="Script" path="res://bomb.gd" id="2_x2c6h"]
+
+[node name="Bomb" instance=ExtResource("1_wrv6l")]
+script = ExtResource("2_x2c6h")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, 0)
+texture = ExtResource("2_d707o")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 0)

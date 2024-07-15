@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0bw1vyly2b3o"]
+[gd_scene load_steps=8 format=3 uid="uid://d0bw1vyly2b3o"]
 
 [ext_resource type="PackedScene" uid="uid://cgsxeah68mwi5" path="res://arc_ship.tscn" id="1_cny7d"]
 [ext_resource type="Script" path="res://bug_ship.gd" id="2_aor86"]
 [ext_resource type="Texture2D" uid="uid://bchhg0bxw6ifj" path="res://textures/bug_ship.png" id="3_pvu2j"]
+[ext_resource type="AudioStream" uid="uid://c2mj7c4iywn7o" path="res://sound/u8/Lowsample/bug.wav" id="4_mrib4"]
 [ext_resource type="AudioStream" uid="uid://dt5ms4bwb2all" path="res://sound/u8/othersplode.wav" id="4_tkcix"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avgxt"]
@@ -23,6 +24,13 @@ visible = false
 [node name="Sprite2D" parent="CollisionShape2D" index="1"]
 texture = ExtResource("3_pvu2j")
 
+[node name="ExplodeSound" parent="CollisionShape2D" index="2"]
+pitch_scale = 0.9
+
+[node name="FlyingSound" parent="CollisionShape2D" index="3"]
+stream = ExtResource("4_mrib4")
+volume_db = -2.0
+
 [node name="Mirror" parent="." index="1"]
 shape = SubResource("RectangleShape2D_eocqb")
 
@@ -31,6 +39,13 @@ visible = false
 
 [node name="Sprite2D" parent="Mirror" index="1"]
 texture = ExtResource("3_pvu2j")
+
+[node name="ExplodeSound" parent="Mirror" index="2"]
+pitch_scale = 0.9
+
+[node name="FlyingSound" parent="Mirror" index="3"]
+stream = ExtResource("4_mrib4")
+volume_db = -2.0
 
 [node name="ExplodeSound" type="AudioStreamPlayer2D" parent="." index="4"]
 stream = ExtResource("4_tkcix")

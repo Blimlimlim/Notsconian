@@ -1,80 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhh8v0ly2gthk"]
+[gd_scene load_steps=4 format=3 uid="uid://dhh8v0ly2gthk"]
 
 [ext_resource type="PackedScene" uid="uid://bahd2ckgau6or" path="res://stage.tscn" id="1_axuci"]
 [ext_resource type="PackedScene" uid="uid://damepr8xrat7m" path="res://hex_base.tscn" id="2_7s2ou"]
 [ext_resource type="PackedScene" uid="uid://bkpoc1mrorc8e" path="res://asteroid.tscn" id="3_6epfe"]
-[ext_resource type="PackedScene" uid="uid://cgsxeah68mwi5" path="res://arc_ship.tscn" id="4_a7x2g"]
 
 [node name="Stage1" instance=ExtResource("1_axuci")]
 
-[node name="HexBase1" parent="." index="10" instance=ExtResource("2_7s2ou")]
-position = Vector2(1630, 120)
+[node name="HexBase3" parent="." index="11" instance=ExtResource("2_7s2ou")]
+position = Vector2(-923, -185)
 
-[node name="HexBase2" parent="." index="11" instance=ExtResource("2_7s2ou")]
-position = Vector2(-1606, -88)
+[node name="HexBase2" parent="." index="12" instance=ExtResource("2_7s2ou")]
+position = Vector2(-587, -847)
 
-[node name="Asteroid" parent="." index="12" instance=ExtResource("3_6epfe")]
-position = Vector2(-1234, -853)
+[node name="HexBase1" parent="." index="13" instance=ExtResource("2_7s2ou")]
+position = Vector2(822, -610)
 
-[node name="Asteroid2" parent="." index="13" instance=ExtResource("3_6epfe")]
-position = Vector2(-1147, 178)
+[node name="Asteroid1" parent="." index="14" instance=ExtResource("3_6epfe")]
+position = Vector2(-383, -125)
 
-[node name="Asteroid3" parent="." index="14" instance=ExtResource("3_6epfe")]
-position = Vector2(-647, -137)
+[node name="Asteroid2" parent="." index="15" instance=ExtResource("3_6epfe")]
+position = Vector2(-105, -775)
 
-[node name="Asteroid4" parent="." index="15" instance=ExtResource("3_6epfe")]
-position = Vector2(1073, -277)
+[node name="Asteroid3" parent="." index="16" instance=ExtResource("3_6epfe")]
+position = Vector2(1367, -641)
 
-[node name="Asteroid5" parent="." index="16" instance=ExtResource("3_6epfe")]
-position = Vector2(111, 1171)
+[node name="Asteroid4" parent="." index="19" instance=ExtResource("3_6epfe")]
+position = Vector2(459, -82)
 
-[node name="Asteroid6" parent="." index="17" instance=ExtResource("3_6epfe")]
-position = Vector2(-1285, 740)
-
-[node name="Asteroid7" parent="." index="18" instance=ExtResource("3_6epfe")]
-position = Vector2(-806, 556)
-
-[node name="Asteroid8" parent="." index="19" instance=ExtResource("3_6epfe")]
-position = Vector2(-758, 696)
-
-[node name="Asteroid9" parent="." index="20" instance=ExtResource("3_6epfe")]
-position = Vector2(-1561, 246)
-
-[node name="Asteroid10" parent="." index="21" instance=ExtResource("3_6epfe")]
-position = Vector2(-1536, 479)
-
-[node name="Asteroid11" parent="." index="22" instance=ExtResource("3_6epfe")]
-position = Vector2(-1035, 544)
-
-[node name="Asteroid12" parent="." index="23" instance=ExtResource("3_6epfe")]
-position = Vector2(-288, -1223)
-
-[node name="Asteroid13" parent="." index="24" instance=ExtResource("3_6epfe")]
-position = Vector2(497, -1265)
-
-[node name="Asteroid14" parent="." index="25" instance=ExtResource("3_6epfe")]
-position = Vector2(419, -851)
-
-[node name="Asteroid15" parent="." index="26" instance=ExtResource("3_6epfe")]
-position = Vector2(1169, -558)
-
-[node name="Asteroid16" parent="." index="27" instance=ExtResource("3_6epfe")]
-position = Vector2(1384, -959)
-
-[node name="Asteroid17" parent="." index="28" instance=ExtResource("3_6epfe")]
-position = Vector2(1648, -210)
-
-[node name="Asteroid18" parent="." index="29" instance=ExtResource("3_6epfe")]
-position = Vector2(557, 1150)
-
-[node name="Asteroid19" parent="." index="30" instance=ExtResource("3_6epfe")]
-position = Vector2(905, 1168)
-
-[node name="Asteroid20" parent="." index="31" instance=ExtResource("3_6epfe")]
-position = Vector2(137, 608)
-
-[node name="Asteroid21" parent="." index="32" instance=ExtResource("3_6epfe")]
-position = Vector2(1147, 626)
-
-[node name="ArcShip" parent="." index="34" instance=ExtResource("4_a7x2g")]
-position = Vector2(-385, -182)
+[node name="Asteroid5" parent="." index="20" instance=ExtResource("3_6epfe")]
+position = Vector2(-1224, -755)

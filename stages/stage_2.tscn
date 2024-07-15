@@ -1,73 +1,43 @@
-[gd_scene load_steps=7 format=3 uid="uid://bscl3t4hg7i67"]
+[gd_scene load_steps=4 format=3 uid="uid://bscl3t4hg7i67"]
 
 [ext_resource type="PackedScene" uid="uid://bahd2ckgau6or" path="res://stage.tscn" id="1_2r17q"]
 [ext_resource type="PackedScene" uid="uid://damepr8xrat7m" path="res://hex_base.tscn" id="2_yfcsk"]
 [ext_resource type="PackedScene" uid="uid://bkpoc1mrorc8e" path="res://asteroid.tscn" id="3_3d0ct"]
-[ext_resource type="PackedScene" uid="uid://cgsxeah68mwi5" path="res://arc_ship.tscn" id="4_nks0i"]
-[ext_resource type="PackedScene" uid="uid://d1x073soshnoq" path="res://bullet_ship.tscn" id="5_ma42q"]
-[ext_resource type="PackedScene" uid="uid://d0bw1vyly2b3o" path="res://bug_ship.tscn" id="6_sk72w"]
 
 [node name="Stage2" instance=ExtResource("1_2r17q")]
 
-[node name="HexBase" parent="." index="10" instance=ExtResource("2_yfcsk")]
-position = Vector2(-826, 595)
+[node name="HexBase1" parent="." index="10" instance=ExtResource("2_yfcsk")]
+position = Vector2(-1104, 445)
 
 [node name="HexBase2" parent="." index="11" instance=ExtResource("2_yfcsk")]
-position = Vector2(-601, 951)
+position = Vector2(-744, 837)
 
 [node name="HexBase3" parent="." index="12" instance=ExtResource("2_yfcsk")]
-position = Vector2(167, 661)
+position = Vector2(381, 761)
 
 [node name="HexBase4" parent="." index="13" instance=ExtResource("2_yfcsk")]
-position = Vector2(-174, 1035)
+position = Vector2(-160, 921)
 
-[node name="Asteroid" parent="." index="15" instance=ExtResource("3_3d0ct")]
+[node name="Asteroid1" parent="." index="14" instance=ExtResource("3_3d0ct")]
 position = Vector2(-820, 278)
 
-[node name="Asteroid2" parent="." index="16" instance=ExtResource("3_3d0ct")]
+[node name="Asteroid2" parent="." index="15" instance=ExtResource("3_3d0ct")]
 position = Vector2(-663, 290)
 
-[node name="Asteroid3" parent="." index="17" instance=ExtResource("3_3d0ct")]
+[node name="Asteroid3" parent="." index="16" instance=ExtResource("3_3d0ct")]
 position = Vector2(-557, 367)
 
-[node name="Asteroid4" parent="." index="18" instance=ExtResource("3_3d0ct")]
+[node name="Asteroid4" parent="." index="17" instance=ExtResource("3_3d0ct")]
 position = Vector2(-421, 426)
 
-[node name="Asteroid5" parent="." index="19" instance=ExtResource("3_3d0ct")]
+[node name="Asteroid5" parent="." index="18" instance=ExtResource("3_3d0ct")]
 position = Vector2(-303, 439)
 
-[node name="Asteroid6" parent="." index="20" instance=ExtResource("3_3d0ct")]
+[node name="Asteroid6" parent="." index="19" instance=ExtResource("3_3d0ct")]
 position = Vector2(-193, 439)
 
-[node name="Asteroid7" parent="." index="21" instance=ExtResource("3_3d0ct")]
+[node name="Asteroid7" parent="." index="20" instance=ExtResource("3_3d0ct")]
 position = Vector2(-48, 405)
 
-[node name="Asteroid8" parent="." index="22" instance=ExtResource("3_3d0ct")]
+[node name="Asteroid8" parent="." index="21" instance=ExtResource("3_3d0ct")]
 position = Vector2(342, 430)
-
-[node name="ArcShip" parent="." index="23" instance=ExtResource("4_nks0i")]
-position = Vector2(-1045, -560)
-
-[node name="ArcShip2" parent="." index="24" instance=ExtResource("4_nks0i")]
-position = Vector2(-1742, 1064)
-
-[node name="ArcShip3" parent="." index="25" instance=ExtResource("4_nks0i")]
-position = Vector2(1236, -311)
-
-[node name="BulletShip" parent="." index="26" instance=ExtResource("5_ma42q")]
-position = Vector2(-1582, 611)
-
-[node name="BulletShip2" parent="." index="27" instance=ExtResource("5_ma42q")]
-position = Vector2(1492, -526)
-
-[node name="BugShip" parent="." index="28" instance=ExtResource("6_sk72w")]
-position = Vector2(-439, -217)
-
-[node name="BugShip2" parent="." index="29" instance=ExtResource("6_sk72w")]
-position = Vector2(738, 362)
-
-[node name="BugShip3" parent="." index="30" instance=ExtResource("6_sk72w")]
-position = Vector2(1566, -224)
-
-[node name="BugShip4" parent="." index="31" instance=ExtResource("6_sk72w")]
-position = Vector2(241, -654)

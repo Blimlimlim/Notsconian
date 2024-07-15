@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhva8dv3aw711"]
+
+[ext_resource type="Script" path="res://points_label.gd" id="1_o7gcg"]
+
+[node name="PointsLabel" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_o7gcg")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

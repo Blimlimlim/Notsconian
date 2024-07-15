@@ -2,7 +2,7 @@ class_name Beam
 extends Area2D
 #TODO implement mirror clones for beams as well to avoid potential glitch
 var area_type = "beam"
-@export var speed = 1600 # speed for beams
+var speed = 1600 # speed for beams
 var velocity = Vector2.ZERO * speed
 
 # Called when the node enters the scene tree for the first time.
@@ -25,5 +25,7 @@ func _on_visibleOnScreenNotifier2d_screen_exited():
 	queue_free()
 
 
-func _on_area_entered(_area):
-	queue_free()
+func _on_area_entered(area):
+	if not self is Bomb:
+		if not area is Bomb:
+			queue_free()

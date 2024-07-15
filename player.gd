@@ -1,12 +1,14 @@
 extends Area2D
-signal collided
+
 
 var area_type = "player"
-@export var speed = 400
+var speed = Globals.PLAYER_SPEED
 var velocity = Vector2.UP * speed # initial movement
 var alive = true # player can control ship while true
+var killable = true
 
 signal sent_location(player_position: Vector2)
+signal collided # TODO may be unused
 signal died
 
 # Called when the node enters the scene tree for the first time.
@@ -63,11 +65,27 @@ func new_beam(beam_velocity:Vector2, beam_rotation) -> Beam:
 	beam.rotation = beam_rotation
 	return beam
 
+func respawn():
+	
+	$AnimatedSprite2D.play("default")
+	position = Vector2(0,0) # move player to center
+	show()
+	killable = false
+	$CollisionShape2D.set_deferred("disabled", false)
+	$FlyingSound.play()
+	alive = true
+	$InvulnerableTime.start()
+	
+
 func _on_area_entered(area):
 	if area.area_type == "enemy" or area.area_type == "obstacle":
-		if true:
+		if killable:
 			collided.emit() # emit our signal
-			$AnimatedSprite2D.animation = "explode" # $ is same as get_node used to get a child node
+			var animation_sprite = $AnimatedSprite2D
+			animation_sprite.animation = "explode" # $ is same as get_node used to get a child node
+			if not animation_sprite.is_playing():
+				animation_sprite.play()
+				
 			$CollisionShape2D.set_deferred("disabled", true) # set this property (disable collision)
 			$FlyingSound.stop()
 			$ExplodeSound.play()
@@ -80,3 +98,7 @@ func _on_animated_sprite_2d_animation_finished():
 
 func _on_timer_timeout():
 	sent_location.emit(position)
+
+
+func _on_invulnerable_time_timeout():
+	killable = true

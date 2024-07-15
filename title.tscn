@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://dltqkbg6p08m0"]
+
+[ext_resource type="Script" path="res://title.gd" id="1_8l57e"]
+[ext_resource type="Texture2D" uid="uid://cuc8skexejdjd" path="res://textures/title/N.png" id="1_murs4"]
+[ext_resource type="Texture2D" uid="uid://b7oo3jucfryre" path="res://textures/title/O.png" id="2_2nlgx"]
+[ext_resource type="Texture2D" uid="uid://bseofds6x6hbv" path="res://textures/title/T.png" id="3_ejl4b"]
+[ext_resource type="Texture2D" uid="uid://bfsth8xyfofn6" path="res://textures/title/S.png" id="4_565gf"]
+[ext_resource type="Texture2D" uid="uid://cxg6omropnbav" path="res://textures/title/C.png" id="5_dawn0"]
+[ext_resource type="Texture2D" uid="uid://nx0g1bmpd3ld" path="res://textures/title/I.png" id="6_hpeto"]
+[ext_resource type="Texture2D" uid="uid://br0dnccpnytim" path="res://textures/title/A.png" id="7_658ri"]
+[ext_resource type="AudioStream" uid="uid://dhbrq4lmd4ajv" path="res://sound/u8/Lowsample/Notsconian.wav" id="9_ymmmc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qaf3o"]
+size = Vector2(3000, 2000)
+
+[node name="Title" type="CanvasLayer"]
+script = ExtResource("1_8l57e")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -2337.0
+offset_top = -668.0
+offset_right = 2943.0
+offset_bottom = 1657.0
+color = Color(0.544974, 0.544974, 0.544974, 1)
+
+[node name="TitleLetters" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.984314)
+position = Vector2(0, -200)
+scale = Vector2(1, 1.75)
+
+[node name="Half1" type="Node2D" parent="TitleLetters"]
+
+[node name="N" type="Sprite2D" parent="TitleLetters/Half1"]
+position = Vector2(25, 314)
+texture = ExtResource("1_murs4")
+
+[node name="O" type="Sprite2D" parent="TitleLetters/Half1"]
+position = Vector2(25, 316)
+texture = ExtResource("2_2nlgx")
+
+[node name="T" type="Sprite2D" parent="TitleLetters/Half1"]
+position = Vector2(25, 314)
+texture = ExtResource("3_ejl4b")
+
+[node name="S" type="Sprite2D" parent="TitleLetters/Half1"]
+position = Vector2(25, 314)
+texture = ExtResource("4_565gf")
+
+[node name="C" type="Sprite2D" parent="TitleLetters/Half1"]
+position = Vector2(25, 314)
+texture = ExtResource("5_dawn0")
+
+[node name="Half2" type="Node2D" parent="TitleLetters"]
+
+[node name="O2" type="Sprite2D" parent="TitleLetters/Half2"]
+position = Vector2(1425, 316)
+texture = ExtResource("2_2nlgx")
+
+[node name="N2" type="Sprite2D" parent="TitleLetters/Half2"]
+position = Vector2(1425, 314)
+texture = ExtResource("1_murs4")
+
+[node name="I" type="Sprite2D" parent="TitleLetters/Half2"]
+position = Vector2(1425, 314)
+texture = ExtResource("6_hpeto")
+
+[node name="A" type="Sprite2D" parent="TitleLetters/Half2"]
+position = Vector2(1425, 314)
+texture = ExtResource("7_658ri")
+
+[node name="N3" type="Sprite2D" parent="TitleLetters/Half2"]
+position = Vector2(1425, 314)
+texture = ExtResource("1_murs4")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ymmmc")
+autoplay = true
+
+[node name="SkipButton" type="TouchScreenButton" parent="."]
+position = Vector2(600, 400)
+shape = SubResource("RectangleShape2D_qaf3o")

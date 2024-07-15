@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4m815ysdkwg0"]
+
+[ext_resource type="PackedScene" uid="uid://bkpoc1mrorc8e" path="res://asteroid.tscn" id="1_ugr0y"]
+
+[node name="EnemyProjectile" instance=ExtResource("1_ugr0y")]
+collision_layer = 16
+collision_mask = 14

@@ -79,7 +79,7 @@ radius = 214.021
 [node name="Player" type="Area2D"]
 position = Vector2(556, 308)
 collision_layer = 9
-collision_mask = 513
+collision_mask = 561
 script = ExtResource("1_dx4nm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -87,6 +87,7 @@ shape = SubResource("CapsuleShape2D_d1cai")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nh88k")
+animation = &"explode"
 autoplay = "default"
 
 [node name="BoundsHitter" type="Area2D" parent="."]
@@ -113,12 +114,18 @@ max_polyphony = 2
 
 [node name="ExplodeSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_x7v84")
+volume_db = 3.0
 
 [node name="FlyingSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_cxbwp")
 volume_db = -5.0
 autoplay = true
 
+[node name="InvulnerableTime" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="InvulnerableTime" to="." method="_on_invulnerable_time_timeout"]

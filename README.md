@@ -39,7 +39,7 @@ Compiling and exporting to Android done with OpenJDK and the Android SDK downloa
 
 Everything else is done in Godot's editor, a powerful tool with which to structure your game.
 
-## ![Explosion](textures\player_splode1.png) Art 
+## ![Explosion](./textures/player_splode1.png) Art 
 All in game art and sound was created by myself as well. I used Libresprite, a free and open source distro of Asesprite for all the visuals and sprites.  I used Anvil Studio and Audacity to create the sound.
 
 # Useful Websites
@@ -66,4 +66,4 @@ All in game art and sound was created by myself as well. I used Libresprite, a f
 * Bonus lives for reaching various score thresholds
 
 
-![Big Explosion](textures\base_splode2.png)
+![Big Explosion](./textures/base_splode2.png)
